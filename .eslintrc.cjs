@@ -11,5 +11,7 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
+    /* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling
+    'react/prop-types': 'off',
   },
-}
+};
