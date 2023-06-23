@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import SearchBar from './Components/SearchBar';
 import Heading from './Components/Heading';
-import Meanings from './Components/Heading';
+import MeaningsContainer from './Components/MeaningsContainer';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -52,7 +52,7 @@ function App() {
       {allWordData && (
         <>
           <Heading allWordData={allWordData} />
-          <Meanings meaningsData={allWordData.meanings} />
+          <MeaningsContainer meaningsData={allWordData.meanings} />
         </>
       )}
     </>
