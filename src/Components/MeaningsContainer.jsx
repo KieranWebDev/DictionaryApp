@@ -1,7 +1,14 @@
 import styled from 'styled-components';
-import Meaning from './MeaningCard';
+import MeaningCard from './MeaningCard';
 
-const StyledMeanings = styled.section``;
+const StyledMeanings = styled.div`
+  ${
+    '' /* background-color: ${(props) => `var(--${props.theme}-mode-background)`};
+  color: ${(props) => `var(--${props.theme}-mode-text)`};
+
+  font-family: ${(props) => `var(--${props.font})`}; */
+  }
+`;
 
 function MeaningsContainer({ meaningsData }) {
   console.log(meaningsData);
@@ -9,7 +16,7 @@ function MeaningsContainer({ meaningsData }) {
   return (
     <StyledMeanings>
       {meaningsData.map((meaning, index) => (
-        <Meaning key={index} meaning={meaning} />
+        <MeaningCard key={index} meaning={meaning} />
       ))}
     </StyledMeanings>
   );

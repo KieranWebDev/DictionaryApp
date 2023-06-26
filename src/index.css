@@ -1,3 +1,14 @@
+:root {
+  --sans-serif: sans-serif;
+  --serif: serif;
+  --mono: monospace;
+  --cursive: cursive;
+  --light-mode-text: black;
+  --dark-mode-text: white;
+  --light-mode-background: white;
+  --dark-mode-background: black;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -7,12 +18,4 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
-}
-
-body {
-  background-color: rgb(2, 2, 36);
-  color: white;
-  margin: 0 auto;
-  padding: 2rem;
-  max-width: 1200px;
 }

@@ -1,14 +1,24 @@
+import { useContext } from 'react';
+import ThemeAndFontContext from './ThemeAndFontContext';
 import styled from 'styled-components';
 
-const StyledMeanings = styled.div``;
+const StyledMeaningsCard = styled.div`
+  ${
+    '' /* background-color: ${(props) => `var(--${props.theme}-mode-background)`};
+  font-family: ${(props) => `var(--${props.font})`};
+  color: ${(props) => `var(--${props.theme}-mode-text)`}; */
+  }
+`;
 
 function Meanings({ meaning }) {
+  const { font, theme } = useContext(ThemeAndFontContext);
+
   // SHORTEN DEFINITIONS ARRAY IF TOO LONG. JUST DISPLAY FIRST 5. USE SLICE METHOD.
 
   // SAME FOR DEFINITIONS. ONLY DISPLAY FIRST 4 OR FIVE.
   console.log(meaning);
   return (
-    <StyledMeanings>
+    <StyledMeaningsCard theme={theme} font={font}>
       <h3>{meaning.partOfSpeech}</h3>
       <ul>
         {meaning.definitions.map((item) => (
@@ -23,7 +33,7 @@ function Meanings({ meaning }) {
           <span key={item}>{item}, </span>
         ))}
       </div>
-    </StyledMeanings>
+    </StyledMeaningsCard>
   );
 }
 
