@@ -11,18 +11,18 @@ const StyledNavBar = styled.nav`
 `;
 
 function NavBar() {
-  const { font, setFont, theme, setTheme } = useContext(ThemeAndFontContext);
+  const { setFont, setTheme } = useContext(ThemeAndFontContext);
 
   const handleFontChange = (e) => {
     setFont(e.target.value);
   };
 
   const handleThemeSwitch = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   return (
-    <StyledNavBar font={font} theme={theme}>
+    <StyledNavBar>
       <h2>logo here</h2>
       <div>
         <select name="font" id="font-select" onChange={handleFontChange}>
