@@ -11,14 +11,21 @@ const StyledMeaningsCard = styled.div`
 `;
 
 function Meanings({ meaning }) {
-  const { font, theme } = useContext(ThemeAndFontContext);
+  const { getAllWordData, setSearchQuery } = useContext(ThemeAndFontContext);
+
+  const newSearch = (synonym) => {
+    console.log('item' + synonym);
+    setSearchQuery(synonym);
+    getAllWordData(synonym);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // SHORTEN DEFINITIONS ARRAY IF TOO LONG. JUST DISPLAY FIRST 5. USE SLICE METHOD.
 
   // SAME FOR DEFINITIONS. ONLY DISPLAY FIRST 4 OR FIVE.
   console.log(meaning);
   return (
-    <StyledMeaningsCard theme={theme} font={font}>
+    <StyledMeaningsCard>
       <h3>{meaning.partOfSpeech}</h3>
       <ul>
         {meaning.definitions.map((item) => (
@@ -29,8 +36,11 @@ function Meanings({ meaning }) {
         ))}
       </ul>
       <div>
-        {meaning.synonyms.map((item) => (
-          <span key={item}>{item}, </span>
+        <h2>SYNONYMS</h2>
+        {meaning.synonyms?.map((item) => (
+          <span onClick={() => newSearch(item)} key={item}>
+            {item},{' '}
+          </span>
         ))}
       </div>
     </StyledMeaningsCard>
