@@ -23,9 +23,9 @@ function App() {
   const [font, setFont] = useState('Sans Serif');
   const [theme, setTheme] = useState('light');
 
-  async function getAllWordData() {
+  async function getAllWordData(word) {
     const response = await fetch(
-      `https://api.dictionaryapi.dev/api/v2/entries/en/${searchQuery}`
+      `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
     );
     const data = await response.json();
     setAllWordData(data[0]);
@@ -34,7 +34,16 @@ function App() {
   // console.log(theme);
   return (
     <>
-      <ThemeAndFontContext.Provider value={{ font, setFont, theme, setTheme }}>
+      <ThemeAndFontContext.Provider
+        value={{
+          font,
+          setFont,
+          theme,
+          setTheme,
+          getAllWordData,
+          setSearchQuery,
+        }}
+      >
         <AppContainer theme={theme} font={font}>
           <NavBar />
           <SearchBar

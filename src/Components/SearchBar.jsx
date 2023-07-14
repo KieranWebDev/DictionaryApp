@@ -5,7 +5,7 @@ const StyledSearchBar = styled.section``;
 function SearchBar({ searchQuery, setSearchQuery, getAllWordData }) {
   function submitForm(e) {
     e.preventDefault();
-    getAllWordData();
+    getAllWordData(searchQuery);
     // setSearchQuery('');
   }
 
