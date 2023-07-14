@@ -17,6 +17,7 @@ function Meanings({ meaning }) {
     console.log('item' + synonym);
     setSearchQuery(synonym);
     getAllWordData(synonym);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // SHORTEN DEFINITIONS ARRAY IF TOO LONG. JUST DISPLAY FIRST 5. USE SLICE METHOD.

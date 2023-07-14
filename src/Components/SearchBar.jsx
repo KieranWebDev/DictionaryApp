@@ -6,7 +6,7 @@ function SearchBar({ searchQuery, setSearchQuery, getAllWordData }) {
   function submitForm(e) {
     e.preventDefault();
     getAllWordData(searchQuery);
-    // setSearchQuery('');
+    setSearchQuery(searchQuery);
   }
 
   return (
