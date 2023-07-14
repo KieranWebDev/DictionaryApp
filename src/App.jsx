@@ -30,8 +30,8 @@ function App() {
     const data = await response.json();
     setAllWordData(data[0]);
   }
-  console.log(font);
-  console.log(theme);
+  // console.log(font);
+  // console.log(theme);
   return (
     <>
       <ThemeAndFontContext.Provider value={{ font, setFont, theme, setTheme }}>
