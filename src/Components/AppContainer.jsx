@@ -16,9 +16,10 @@ const StyledAppContainer = styled.div`
   transition: all 0.3s ease-in-out;
   min-height: 100vh;
   ${'' /* max-width: 1200px; */}
-  max-width:700px;
+  max-width:750px;
   margin: 0 auto;
   border: 2px solid red;
+  padding: 2rem 1rem;
 `;
 
 function AppContainer({ children }) {

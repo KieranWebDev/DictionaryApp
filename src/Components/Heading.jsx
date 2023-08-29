@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+// icon
+import playIcon from '../assets/icon-play.svg';
 import styled from 'styled-components';
 
 const StyledHeading = styled.section``;
@@ -9,6 +11,7 @@ function Heading({ allWordData }) {
     phoneticSpelling: '',
     audio: '',
   });
+  const audioRef = useRef(null);
 
   function getHeadingData() {
     if (allWordData) {
@@ -50,15 +53,22 @@ function Heading({ allWordData }) {
     console.log(headingData);
   }, [headingData]);
 
+  const handlePlay = () => {
+    audioRef.current.play();
+  };
+
   return (
     <StyledHeading>
       <h1>{headingData.word}</h1>
       {headingData.phoneticSpelling && <h3>{headingData.phoneticSpelling}</h3>}
       {/* <p>{headingData.audio}</p> */}
       {headingData.audio && (
-        <audio controls src={`${headingData.audio}`}>
-          <a href={`${headingData.audio}`}>play</a>
-        </audio>
+        <>
+          <audio ref={audioRef} src={`${headingData.audio}`}></audio>
+          <button onClick={handlePlay}>
+            <img src={playIcon} alt="play icon" />
+          </button>
+        </>
       )}
     </StyledHeading>
   );
