@@ -3,7 +3,27 @@ import { useEffect, useState, useRef } from 'react';
 import playIcon from '../assets/icon-play.svg';
 import styled from 'styled-components';
 
-const StyledHeading = styled.section``;
+// import cssVars from '../theme/theme';
+
+const StyledHeading = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+
+  h1 {
+    font-size: var(--headingL);
+    margin-bottom: 0.5rem;
+  }
+  h3 {
+    font-size: var(--headingM);
+    color: var(--purple);
+  }
+  & .play-icon {
+    border: none;
+    background-color: transparent;
+  }
+`;
 
 function Heading({ allWordData }) {
   const [headingData, setHeadingData] = useState({
@@ -59,16 +79,20 @@ function Heading({ allWordData }) {
 
   return (
     <StyledHeading>
-      <h1>{headingData.word}</h1>
-      {headingData.phoneticSpelling && <h3>{headingData.phoneticSpelling}</h3>}
-      {/* <p>{headingData.audio}</p> */}
+      <div>
+        <h1>{headingData.word}</h1>
+        {headingData.phoneticSpelling && (
+          <h3>{headingData.phoneticSpelling}</h3>
+        )}
+      </div>
+
       {headingData.audio && (
-        <>
+        <div>
           <audio ref={audioRef} src={`${headingData.audio}`}></audio>
           <button onClick={handlePlay}>
-            <img src={playIcon} alt="play icon" />
+            <img className="play-icon" src={playIcon} alt="play icon" />
           </button>
-        </>
+        </div>
       )}
     </StyledHeading>
   );

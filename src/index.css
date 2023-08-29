@@ -4,21 +4,20 @@
   --serif: serif;
   --mono: monospace;
   --cursive: cursive;
-  --purple: #A445ED;
-  --sub-text: #757575
+  --purple: #a445ed;
+  --sub-text: #757575;
   /* font sizes */
-  --headingL: 64px;
+  --headingL: 4rem;
   --headingM: 24px;
   --headingS: 20px;
   --bodyM: 18px;
   --bodyS: 14px;
-/* light mode */
+  /* light mode */
   --light-mode-text: #2d2d2d;
   --light-mode-background: white;
   /* dark mode */
   --dark-mode-text: #fff;
   --dark-mode-background: #050505;
-
 }
 
 html {
