@@ -1,12 +1,24 @@
 :root {
+  /* general */
   --sans-serif: sans-serif;
   --serif: serif;
   --mono: monospace;
   --cursive: cursive;
-  --light-mode-text: black;
-  --dark-mode-text: white;
+  --purple: #A445ED;
+  --sub-text: #757575
+  /* font sizes */
+  --headingL: 64px;
+  --headingM: 24px;
+  --headingS: 20px;
+  --bodyM: 18px;
+  --bodyS: 14px;
+/* light mode */
+  --light-mode-text: #2d2d2d;
   --light-mode-background: white;
-  --dark-mode-background: black;
+  /* dark mode */
+  --dark-mode-text: #fff;
+  --dark-mode-background: #050505;
+
 }
 
 html {
