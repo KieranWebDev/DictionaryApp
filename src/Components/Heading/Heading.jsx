@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 // icon
 // import playIcon from '../../assets/icon-play.svg';
 import styled from 'styled-components';
@@ -57,8 +57,6 @@ const StyledHeadingContainer = styled.div`
 // `;
 
 function Heading({ allWordData }) {
-  const audioRef = useRef(null);
-
   const [headingData, setHeadingData] = useState({
     word: '',
     phoneticSpelling: '',
@@ -104,10 +102,6 @@ function Heading({ allWordData }) {
   useEffect(() => {
     console.log(headingData);
   }, [headingData]);
-
-  const handlePlay = () => {
-    audioRef.current.play();
-  };
 
   return (
     <StyledHeadingContainer>
