@@ -8,11 +8,15 @@ const StyledButtonContainer = styled.div`
     border: none;
     cursor: pointer;
     border-radius: 50%;
-    width: 300px;
+    transition: all 0.3s ease-in-out;
   }
-
-  ${
-    '' /* &svg:hover {
+  svg {
+    circle,
+    path {
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  svg:hover {
     circle {
       opacity: 1;
     }
@@ -20,7 +24,6 @@ const StyledButtonContainer = styled.div`
     path {
       fill: #fff;
     }
-  } */
   }
 `;
 

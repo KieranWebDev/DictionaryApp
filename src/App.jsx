@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ThemeAndFontContext from './Components/ThemeAndFontContext';
 import './App.css';
 import SearchBar from './Components/SearchBar';
-import Heading from './Components/Heading';
+import Heading from './Components/Heading/Heading';
 import MeaningsContainer from './Components/MeaningsContainer';
 import NavBar from './Components/NavBar';
 import AppContainer from './Components/AppContainer';
