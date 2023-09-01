@@ -2,11 +2,26 @@ import { useContext } from 'react';
 import ThemeAndFontContext from './ThemeAndFontContext';
 import styled from 'styled-components';
 
+import Logo from '../assets/logo.svg';
+
 const StyledNavBar = styled.nav`
-  ${
-    '' /* background-color: ${(props) => `var(--${props.theme}-mode-background)`};
-  color: ${(props) => `var(--${props.theme}-mode-text)`};
-  font-family: ${(props) => `var(--${props.font})`}; */
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .themes-switch-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .themes-switch-container .vertical-line {
+    width: 1px;
+    height: 20px;
+    margin: 0 auto;
+    background: red;
+    color: red;
   }
 `;
 
@@ -23,15 +38,17 @@ function NavBar() {
 
   return (
     <StyledNavBar>
-      <h2>logo here</h2>
       <div>
+        <img src={Logo} alt="logo" />
+      </div>
+      <div className="themes-switch-container">
         <select name="font" id="font-select" onChange={handleFontChange}>
-          <option value="sans-serif">Sans Serif</option>
           <option value="serif">Serif</option>
+          <option value="sans-serif">Sans Serif</option>
           <option value="mono">Mono</option>
           <option value="cursive">Cursive</option>
         </select>
-        <span>|</span>
+        <div className="vertical-line"></div>
         <button onClick={handleThemeSwitch}>Theme Switch</button>
       </div>
     </StyledNavBar>

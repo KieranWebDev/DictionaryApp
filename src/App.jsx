@@ -20,7 +20,7 @@ import AppContainer from './Components/AppContainer';
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [allWordData, setAllWordData] = useState(null);
-  const [font, setFont] = useState('Sans Serif');
+  const [font, setFont] = useState('Serif');
   const [theme, setTheme] = useState('light');
 
   async function getAllWordData(word) {

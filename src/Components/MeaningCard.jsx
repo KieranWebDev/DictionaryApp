@@ -8,6 +8,34 @@ const StyledMeaningsCard = styled.div`
   font-family: ${(props) => `var(--${props.font})`};
   color: ${(props) => `var(--${props.theme}-mode-text)`}; */
   }
+  .part-of-speech-container {
+    display: flex;
+    ${'' /* justify-content: space-between; */}
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    font-size: 1.5rem;
+  }
+  .part-of-speech-container h3 {
+    margin-top: -5px;
+  }
+  .part-of-speech-container hr {
+    flex-grow: 2;
+  }
+  .definition-container span {
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  .definition-container ul {
+    margin-left: 1.5rem;
+  }
+  .definition-container li {
+    margin-bottom: 0.8rem;
+  }
+  .definition-container .example-sentence {
+    margin-top: 0.8rem;
+    color: var(--sub-text);
+  }
 `;
 
 function Meanings({ meaning }) {
@@ -26,15 +54,23 @@ function Meanings({ meaning }) {
   console.log(meaning);
   return (
     <StyledMeaningsCard>
-      <h3>{meaning.partOfSpeech}</h3>
-      <ul>
-        {meaning.definitions.map((item) => (
-          <li key={item.definition}>
-            <p>{item.definition}</p>
-            {item.example && <h1>{item.example}</h1>}
-          </li>
-        ))}
-      </ul>
+      <div className="part-of-speech-container">
+        <h3>{meaning.partOfSpeech}</h3>
+        <hr />
+      </div>
+      <div className="definition-container">
+        <span>Meaning</span>
+        <ul>
+          {meaning.definitions.map((item) => (
+            <li key={item.definition}>
+              <p>{item.definition}</p>
+              {item.example && (
+                <p className="example-sentence">&quot;{item.example}&quot;</p>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
       <div>
         <h2>SYNONYMS</h2>
         {meaning.synonyms?.map((item) => (

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-// icon
-// import playIcon from '../../assets/icon-play.svg';
 import styled from 'styled-components';
+// components
 import AudioButton from './AudioButton.jsx';
 
 const StyledHeadingContainer = styled.div`
