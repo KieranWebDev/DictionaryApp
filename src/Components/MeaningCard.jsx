@@ -8,6 +8,16 @@ const StyledMeaningsCard = styled.div`
   font-family: ${(props) => `var(--${props.font})`};
   color: ${(props) => `var(--${props.theme}-mode-text)`}; */
   }
+  .part-of-speech-container {
+    display: flex;
+    ${'' /* justify-content: space-between; */}
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .part-of-speech-container hr {
+    flex-grow: 2;
+  }
 `;
 
 function Meanings({ meaning }) {
@@ -26,7 +36,10 @@ function Meanings({ meaning }) {
   console.log(meaning);
   return (
     <StyledMeaningsCard>
-      <h3>{meaning.partOfSpeech}</h3>
+      <div className="part-of-speech-container">
+        <h3>{meaning.partOfSpeech}</h3>
+        <hr />
+      </div>
       <ul>
         {meaning.definitions.map((item) => (
           <li key={item.definition}>
