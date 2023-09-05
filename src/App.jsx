@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import ThemeAndFontContext from './Components/ThemeAndFontContext';
 import './App.css';
+// Components
 import SearchBar from './Components/SearchBar';
 import Heading from './Components/Heading/Heading';
 import MeaningsContainer from './Components/MeaningsContainer';
 import NavBar from './Components/NavBar';
 import AppContainer from './Components/AppContainer';
+import ErrorMessage from './Components/ErrorMessage';
 // import styled from 'styled-components';
 
 // const StyledAppContainer = styled.div`
@@ -26,16 +28,23 @@ function App() {
 
   async function getAllWordData(word) {
     try {
+      setError(false);
       const response = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
       );
+
+      if (!response.ok) {
+        throw new Error('API request failed');
+      }
+
       const data = await response.json();
       setAllWordData(data[0]);
-    } catch (error) {
-      console.error(error);
+      // console.log(data[0]);
+    } catch (fetchError) {
       setError(true);
     }
   }
+  console.log(error);
   // console.log(font);
   // console.log(theme);
   return (
