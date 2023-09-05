@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import styled from 'styled-components';
 import iconSearch from '../assets/icon-search.svg';
 
@@ -39,16 +41,32 @@ function SearchBar({
   setSearchQuery,
   getAllWordData,
   setEmptySearch,
+  emptySearch,
 }) {
+  const [searchSubmitted, setSearchSubmitted] = useState(false);
+
   function submitForm(e) {
     e.preventDefault();
+
+    setSearchSubmitted(true);
+
     if (searchQuery === '') {
       setEmptySearch(true);
       return;
     }
     getAllWordData(searchQuery);
-    setSearchQuery(searchQuery);
+    // setSearchQuery(searchQuery);
     setEmptySearch(false);
+  }
+
+  function onInputChange(e) {
+    if (searchSubmitted && e.target.value === '') {
+      setEmptySearch(true);
+      setSearchQuery(e.target.value);
+    } else {
+      setEmptySearch(false);
+      setSearchQuery(e.target.value);
+    }
   }
 
   return (
@@ -57,13 +75,15 @@ function SearchBar({
         <input
           type="text"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => onInputChange(e)}
           placeholder="Search for a word..."
         />
+
         <button onClick={submitForm}>
           <img src={iconSearch} alt="" />
         </button>
       </form>
+      {emptySearch && searchSubmitted && <p>Whoops, can’t be empty…</p>}
     </StyledSearchBar>
   );
 }

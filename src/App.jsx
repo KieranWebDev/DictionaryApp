@@ -82,17 +82,19 @@ function App() {
             setSearchQuery={setSearchQuery}
             getAllWordData={getAllWordData}
             setEmptySearch={setEmptySearch}
+            // setEmptySearchMessage={setEmptySearchMessage}
+            emptySearch={emptySearch}
           />
 
-          {allWordData && !error && searchQuery !== '' && (
+          {allWordData && !error && !loading && (
             <>
               <Heading allWordData={allWordData} />
               <MeaningsContainer meaningsData={allWordData.meanings} />
             </>
           )}
-          {error && searchQuery && <ErrorMessage />}
-          {loading && <h1>Loading...</h1>}
-          {emptySearch && (
+          {error && <ErrorMessage />}
+          {loading && !error && <h1>Loading...</h1>}
+          {allWordData === null && !loading && !error && (
             <div className="welcome-message">
               <h1>Welcome to the Dictionary App</h1>
               <p>Search for a word to get started</p>
