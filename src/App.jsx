@@ -22,13 +22,19 @@ function App() {
   const [allWordData, setAllWordData] = useState(null);
   const [font, setFont] = useState('Serif');
   const [theme, setTheme] = useState('light');
+  const [error, setError] = useState(false);
 
   async function getAllWordData(word) {
-    const response = await fetch(
-      `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
-    );
-    const data = await response.json();
-    setAllWordData(data[0]);
+    try {
+      const response = await fetch(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+      );
+      const data = await response.json();
+      setAllWordData(data[0]);
+    } catch (error) {
+      console.error(error);
+      setError(true);
+    }
   }
   // console.log(font);
   // console.log(theme);
@@ -58,6 +64,7 @@ function App() {
               <MeaningsContainer meaningsData={allWordData.meanings} />
             </>
           )}
+          {error && <ErrorMessage />}
         </AppContainer>
       </ThemeAndFontContext.Provider>
     </>

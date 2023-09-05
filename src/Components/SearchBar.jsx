@@ -48,6 +48,7 @@ function SearchBar({ searchQuery, setSearchQuery, getAllWordData }) {
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search for a word..."
         />
         <button onClick={submitForm}>
           <img src={iconSearch} alt="" />
