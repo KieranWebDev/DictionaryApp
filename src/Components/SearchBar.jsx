@@ -34,11 +34,21 @@ const StyledSearchBar = styled.section`
   }
 `; /*change later*/
 
-function SearchBar({ searchQuery, setSearchQuery, getAllWordData }) {
+function SearchBar({
+  searchQuery,
+  setSearchQuery,
+  getAllWordData,
+  setEmptySearch,
+}) {
   function submitForm(e) {
     e.preventDefault();
+    if (searchQuery === '') {
+      setEmptySearch(true);
+      return;
+    }
     getAllWordData(searchQuery);
     setSearchQuery(searchQuery);
+    setEmptySearch(false);
   }
 
   return (

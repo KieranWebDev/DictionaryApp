@@ -43,8 +43,8 @@ function NavBar() {
       </div>
       <div className="themes-switch-container">
         <select name="font" id="font-select" onChange={handleFontChange}>
-          <option value="serif">Serif</option>
           <option value="sans-serif">Sans Serif</option>
+          <option value="serif">Serif</option>
           <option value="mono">Mono</option>
           <option value="cursive">Cursive</option>
         </select>

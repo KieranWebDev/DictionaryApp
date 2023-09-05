@@ -22,15 +22,27 @@ import ErrorMessage from './Components/ErrorMessage';
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [allWordData, setAllWordData] = useState(null);
-  const [font, setFont] = useState('Serif');
+  const [font, setFont] = useState('sans-serif');
   const [theme, setTheme] = useState('light');
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [emptySearch, setEmptySearch] = useState(true);
+
+  // useEffect(() => {
+  //   getAllWordData(searchQuery);
+  // }, [allWordData]);
 
   async function getAllWordData(word) {
     try {
       setLoading(true);
       setError(false);
+
+      if (word === '') {
+        setEmptySearch(true);
+      } else {
+        setEmptySearch(false);
+      }
+
       const response = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
       );
@@ -45,6 +57,7 @@ function App() {
     } catch (fetchError) {
       setLoading(false);
       setError(true);
+      setEmptySearch(false);
     }
   }
   console.log(error);
@@ -68,16 +81,23 @@ function App() {
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
             getAllWordData={getAllWordData}
+            setEmptySearch={setEmptySearch}
           />
 
-          {allWordData && (
+          {allWordData && !error && searchQuery !== '' && (
             <>
               <Heading allWordData={allWordData} />
               <MeaningsContainer meaningsData={allWordData.meanings} />
             </>
           )}
-          {error && <ErrorMessage />}
+          {error && searchQuery && <ErrorMessage />}
           {loading && <h1>Loading...</h1>}
+          {emptySearch && (
+            <div className="welcome-message">
+              <h1>Welcome to the Dictionary App</h1>
+              <p>Search for a word to get started</p>
+            </div>
+          )}
         </AppContainer>
       </ThemeAndFontContext.Provider>
     </>
