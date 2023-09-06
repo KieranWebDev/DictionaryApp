@@ -22,6 +22,11 @@ const StyledMeaningsCard = styled.div`
   .part-of-speech-container hr {
     flex-grow: 2;
   }
+
+  .definition-container {
+    margin-bottom: 3rem;
+  }
+
   .definition-container span {
     display: block;
     margin-bottom: 1.5rem;
@@ -35,6 +40,20 @@ const StyledMeaningsCard = styled.div`
   .definition-container .example-sentence {
     margin-top: 0.8rem;
     color: var(--sub-text);
+  }
+  .synonym {
+    cursor: pointer;
+    color: var(--purple);
+    font-weight: 700;
+  }
+  .synonym:hover {
+    text-decoration: underline;
+  }
+  .synonym-title {
+    color: var(--sub-text);
+  }
+  .synonyms-container {
+    margin-bottom: 2.5rem;
   }
 `;
 
@@ -71,14 +90,20 @@ function Meanings({ meaning }) {
           ))}
         </ul>
       </div>
-      <div>
-        <h2>SYNONYMS</h2>
-        {meaning.synonyms?.map((item) => (
-          <span onClick={() => newSearch(item)} key={item}>
-            {item},{' '}
-          </span>
-        ))}
-      </div>
+      {meaning.synonyms.length > 0 && (
+        <div className="synonyms-container">
+          <span className="synonym-title">Synonyms </span>
+          {meaning.synonyms?.map((item) => (
+            <span
+              className="synonym"
+              onClick={() => newSearch(item)}
+              key={item}
+            >
+              {item},{' '}
+            </span>
+          ))}
+        </div>
+      )}
     </StyledMeaningsCard>
   );
 }
