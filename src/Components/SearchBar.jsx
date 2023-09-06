@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import styled from 'styled-components';
 import iconSearch from '../assets/icon-search.svg';
@@ -22,6 +22,22 @@ const StyledSearchBar = styled.section`
     background: var(--search-box);
     font-size: 1.3rem;
   }
+  input:focus {
+    outline: none;
+    ${'' /* border: 1px solid purple; */}
+
+    ${
+      '' /* border: ${(props) =>
+      props.emptysearch === 'true' && props.searchsubmitted === 'true'
+        ? '2px solid red'
+        : '2px solid purple'}; */
+    }
+border: 2px solid var(--purple);
+    ${
+      '' /* border-color: ${(props) =>
+      props.emptysearch === 'true' ? 'red' : 'green'}; */
+    }
+  }
 
   button {
     ${'' /* border-left: none; */}
@@ -34,6 +50,11 @@ const StyledSearchBar = styled.section`
     margin: 0 auto;
     text-align: center;
   }
+
+  .empty-search-message {
+    color: red;
+    margin-top: 0.5rem;
+  }
 `; /*change later*/
 
 function SearchBar({
@@ -44,6 +65,7 @@ function SearchBar({
   emptySearch,
 }) {
   const [searchSubmitted, setSearchSubmitted] = useState(false);
+  const inputRef = useRef();
 
   function submitForm(e) {
     e.preventDefault();
@@ -69,6 +91,8 @@ function SearchBar({
     }
   }
 
+  console.log('test ' + emptySearch.toString() + typeof emptySearch.toString());
+  console.log('yo ' + searchSubmitted.toString());
   return (
     <StyledSearchBar>
       <form>
@@ -77,13 +101,18 @@ function SearchBar({
           value={searchQuery}
           onChange={(e) => onInputChange(e)}
           placeholder="Search for a word..."
+          emptysearch={emptySearch.toString()}
+          searchsubmitted={searchSubmitted.toString()}
+          ref={inputRef}
         />
 
-        <button onClick={submitForm}>
+        <button onClick={submitForm} onFocus={() => inputRef.current.focus()}>
           <img src={iconSearch} alt="" />
         </button>
       </form>
-      {emptySearch && searchSubmitted && <p>Whoops, can’t be empty…</p>}
+      {emptySearch && searchSubmitted && (
+        <p className="empty-search-message">Whoops, can’t be empty…</p>
+      )}
     </StyledSearchBar>
   );
 }

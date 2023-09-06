@@ -60,7 +60,7 @@ function App() {
       setEmptySearch(false);
     }
   }
-  console.log(error);
+  // console.log(error);
   // console.log(font);
   // console.log(theme);
   return (
