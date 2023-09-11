@@ -8,6 +8,7 @@ import MeaningsContainer from './Components/MeaningsContainer';
 import NavBar from './Components/NavBar';
 import AppContainer from './Components/AppContainer';
 import ErrorMessage from './Components/ErrorMessage';
+import WelcomeMessage from './Components/WelcomeMessage';
 // import styled from 'styled-components';
 
 // const StyledAppContainer = styled.div`
@@ -94,12 +95,7 @@ function App() {
           )}
           {error && <ErrorMessage />}
           {loading && !error && <h1>Loading...</h1>}
-          {allWordData === null && !loading && !error && (
-            <div className="welcome-message">
-              <h1>Welcome to the Dictionary App</h1>
-              <p>Search for a word to get started</p>
-            </div>
-          )}
+          {allWordData === null && !loading && !error && <WelcomeMessage />}
         </AppContainer>
       </ThemeAndFontContext.Provider>
     </>
